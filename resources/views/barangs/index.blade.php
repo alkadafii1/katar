@@ -6,10 +6,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div>
                     <h3 class="text-center my-4">Data Barang</h3>
-                    <hr>
-                </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('barangs.create') }}" class="btn btn-md btn-success mb-3">Tambah Barang</a>
