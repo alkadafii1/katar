@@ -21,8 +21,8 @@ return new class extends Migration
             $table->decimal('hargaBeli', 15, 2);
             $table->decimal('hargaJual', 15, 2);
 
-            $table->foreign('idmerk')->references('id')->on('merk');
-            $table->foreign('idkategori')->references('id')->on('kategori');
+            $table->foreign('idmerk')->references('id')->on('merk')->onDelete('cascade');
+            $table->foreign('idkategori')->references('id')->on('kategori')->onDelete('cascade');
         });
 
         // Tabel opname
@@ -35,8 +35,8 @@ return new class extends Migration
             $table->integer('stokSistem');
             $table->integer('selisih')->nullable();
 
-            $table->foreign('idbarang')->references('id')->on('barang');
-            $table->foreign('idstaff')->references('id')->on('staff');
+            $table->foreign('idbarang')->references('id')->on('barang')->onDelete('cascade');
+            $table->foreign('idstaff')->references('id')->on('staff')->onDelete('cascade');
         });
 
         // Tabel shop
@@ -45,7 +45,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idbarang');
             $table->integer('poinRequired');
 
-            $table->foreign('idbarang')->references('id')->on('barang');
+            $table->foreign('idbarang')->references('id')->on('barang')->onDelete('cascade');
         });
 
         // Tabel shift
@@ -55,7 +55,7 @@ return new class extends Migration
             $table->time('jamKerja');
             $table->time('jamPulang');
 
-            $table->foreign('idstaff')->references('id')->on('staff');
+            $table->foreign('idstaff')->references('id')->on('staff')->onDelete('cascade');
         });
 
         // Tabel cash_Drawer
@@ -67,7 +67,7 @@ return new class extends Migration
             $table->integer('saldoAwal');
             $table->integer('saldoAkhir');
 
-            $table->foreign('idstaff')->references('id')->on('staff');
+            $table->foreign('idstaff')->references('id')->on('staff')->onDelete('cascade');
         });
 
         // Tabel transaksi
@@ -80,8 +80,8 @@ return new class extends Migration
             $table->integer('totalTransaksi');
             $table->enum('tipeTransaksi', ['beli', 'tukar']);
 
-            $table->foreign('idPelanggan')->references('id')->on('pelanggan');
-            $table->foreign('idStaff')->references('id')->on('staff');
+            $table->foreign('idPelanggan')->references('id')->on('pelanggan')->onDelete('cascade');
+            $table->foreign('idStaff')->references('id')->on('staff')->onDelete('cascade');
         });
 
         // Tabel pembelian
@@ -93,9 +93,9 @@ return new class extends Migration
             $table->integer('quantity');
             $table->date('tglPembelian');
 
-            $table->foreign('idtransaksi')->references('id')->on('transaksi');
-            $table->foreign('idbarang')->references('id')->on('barang');
-            $table->foreign('idsupplier')->references('id')->on('supplier');
+            $table->foreign('idtransaksi')->references('id')->on('transaksi')->onDelete('cascade');
+            $table->foreign('idbarang')->references('id')->on('barang')->onDelete('cascade');
+            $table->foreign('idsupplier')->references('id')->on('supplier')->onDelete('cascade');
         });
 
         // Tabel penukaran
@@ -107,9 +107,9 @@ return new class extends Migration
             $table->integer('pointUsed');
             $table->date('tglRedeem');
 
-            $table->foreign('idtransaksi')->references('id')->on('transaksi');
-            $table->foreign('idpelanggan')->references('id')->on('pelanggan');
-            $table->foreign('idshop')->references('id')->on('shop');
+            $table->foreign('idtransaksi')->references('id')->on('transaksi')->onDelete('cascade');
+            $table->foreign('idpelanggan')->references('id')->on('pelanggan')->onDelete('cascade');
+            $table->foreign('idshop')->references('id')->on('shop')->onDelete('cascade');
         });
 
         // Tabel penjualan
@@ -120,8 +120,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->date('tglPenjualan');
 
-            $table->foreign('idtransaksi')->references('id')->on('transaksi');
-            $table->foreign('idbarang')->references('id')->on('barang');
+            $table->foreign('idtransaksi')->references('id')->on('transaksi')->onDelete('cascade');
+            $table->foreign('idbarang')->references('id')->on('barang')->onDelete('cascade');
         });
     }
 

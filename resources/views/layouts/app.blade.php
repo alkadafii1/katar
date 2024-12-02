@@ -46,13 +46,16 @@
                         <a class="nav-link" href="{{ url('/staffs') }}">Staff</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/shifts') }}">Merks</a>
+                        <a class="nav-link" href="{{ url('/shifts') }}">Shift</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/barangs') }}">Barang</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/merks') }}">Merk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/kategoris') }}">Kategori</a>
                     </li>
                 </ul>
             </div>
