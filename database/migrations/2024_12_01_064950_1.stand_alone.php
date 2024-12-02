@@ -34,9 +34,9 @@ return new class extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
             $table->string('namaStaff');
-            $table->string('posisi');
+            $table->string('sebagai');
             $table->string('email')->unique();
-            $table->integer('noTlp')->unique();
+            $table->string('noTlp')->unique();
             $table->timestamps();
         });
 

@@ -4,26 +4,34 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MerkController;
 use App\Http\Controllers\pelangganController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ShiftController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-// barang
-
+// index,create,store,show,edit,update,destroy
+// CRUD barang
 Route::resource('barangs', BarangController::class);
 
-// kategori
+// CRUD kategori
 Route::resource('kategoris', KategoriController::class);
 
-// merk
+// CRUD merk
 Route::resource('merks', MerkController::class);
 
-// pelanggan
-Route::get('pelanggan/create', [pelangganController::class, 'create'])->name('pelanggan.create');
-Route::post('pelanggan', [pelangganController::class, 'store'])->name('pelanggan.store');
-Route::resource('/pelanggan', pelangganController::class);
+// CRUD pelanggan
+Route::resource('pelanggans', PelangganController::class);
+
+// CRUD staff
+Route::resource('staffs', StaffController::class);
+
+// CRUD shift
+Route::resource('shifts', ShiftController::class);
+
+
+
 
 
