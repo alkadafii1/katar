@@ -41,7 +41,7 @@ class ShiftController extends Controller
     {
         $shift = Shift::findOrFail($id); 
         $staffs = Staff::all(); 
-        return view('shifts.edit', compact('shifts', 'staffs'));
+        return view('shifts.edit', compact('shift', 'staffs'));
     }
 
     // Update

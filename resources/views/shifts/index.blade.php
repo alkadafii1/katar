@@ -29,7 +29,7 @@
                 <td>{{ $shift->jamKerja }}</td>
                 <td>{{ $shift->jamPulang }}</td>
                 <td>
-                    <a href="{{ route('shift.edit', $shift->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ route('shifts.edit', $shift->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('shifts.destroy', $shift->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
