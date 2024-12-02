@@ -2,82 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
+use App\Models\pelanggan;
 use Illuminate\Http\Request;
 
-class pelangganController extends Controller
+class PelangganController extends Controller
 {
-    // Menampilkan semua data pelanggan
+    // daftar pelanggan
     public function index()
     {
-        $pelanggan = Pelanggan::all();
-        return view('pelanggan.index', compact('pelanggan'));  // Menampilkan data pelanggan ke dalam view
+        $pelanggans = pelanggan::all(); 
+        return view('pelanggans.index', compact('pelanggans'));
     }
 
-    // Menampilkan form untuk membuat pelanggan baru
+    // form pelanggan baru
     public function create()
     {
-        return view('pelanggan.create');  // Menampilkan form input data pelanggan
+        return view('pelanggans.create');
     }
 
-    // Menyimpan pelanggan baru ke dalam database
+    // Simpan 
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
             'namaPelanggan' => 'required|string|max:255',
-            'noTlp' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
+            'noTlp' => 'required|numeric|unique:pelanggan,noTlp',
+            'email' => 'required|email|unique:pelanggan,email',
+            'jumlahPoin' => 'required|integer|min:0',
         ]);
 
-        $pelanggan = new Pelanggan();
-        $pelanggan->namaPelanggan = $request->namaPelanggan;
-        $pelanggan->noTlp = $request->noTlp;
-        $pelanggan->email = $request->email;
-        $pelanggan->save();
+        pelanggan::create($request->all());
 
-        return redirect()->route('pelanggan.index');  // Kembali ke halaman daftar pelanggan
+        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan berhasil ditambahkan.');
     }
 
-    // Menampilkan detail pelanggan berdasarkan ID
+
     public function show($id)
     {
-        $pelanggan = Pelanggan::find($id);
-        return view('pelanggan.show', compact('pelanggan'));  // Menampilkan detail pelanggan ke dalam view
+        $pelanggan = pelanggan::findOrFail($id);
+        return view('pelanggans.show', compact('pelanggan'));
     }
 
-    // Menampilkan form untuk mengedit data pelanggan
+    // Edit
     public function edit($id)
     {
-        $pelanggan = Pelanggan::find($id);
-        return view('pelanggan.edit', compact('pelanggan'));  // Menampilkan form edit
+        $pelanggan = pelanggan::findOrFail($id);
+        return view('pelanggans.edit', compact('pelanggan'));
     }
 
-    // Memperbarui data pelanggan di database
+    // Update
     public function update(Request $request, $id)
     {
-        // Validasi input
         $request->validate([
             'namaPelanggan' => 'required|string|max:255',
-            'noTlp' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
+            'noTlp' => 'required|numeric|unique:pelanggan,noTlp,' . $id,
+            'email' => 'required|email|unique:pelanggan,email,' . $id,
+            'jumlahPoin' => 'required|integer|min:0',
         ]);
 
-        $pelanggan = Pelanggan::find($id);
-        $pelanggan->namaPelanggan = $request->namaPelanggan;
-        $pelanggan->noTlp = $request->noTlp;
-        $pelanggan->email = $request->email;
-        $pelanggan->save();
+        $pelanggan = pelanggan::findOrFail($id);
+        $pelanggan->update($request->all());
 
-        return redirect()->route('pelanggan.index');  // Kembali ke halaman daftar pelanggan
+        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan berhasil diperbarui.');
     }
 
-    // Menghapus data pelanggan
+    // Hapus
     public function destroy($id)
     {
-        $pelanggan = Pelanggan::find($id);
+        $pelanggan = pelanggan::findOrFail($id);
         $pelanggan->delete();
 
-        return redirect()->route('pelanggan.index');  // Kembali ke halaman daftar pelanggan
+        return redirect()->route('pelanggans.index')->with('success', 'Pelanggan berhasil dihapus.');
     }
 }

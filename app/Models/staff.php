@@ -10,9 +10,10 @@ class staff extends Model
     use HasFactory;
 
     protected $table = 'staff';
+    public $timestamps = false;
 
     protected $fillable = [
-        'namaStaff', 'posisi', 'email', 'noTlp'
+        'namaStaff', 'sebagai', 'email', 'noTlp'
     ];
 
     public function transaksi()
