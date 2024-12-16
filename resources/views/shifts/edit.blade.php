@@ -29,11 +29,23 @@
         </div>
         <div class="mb-3">
             <label for="jamKerja" class="form-label">Jam Kerja</label>
-            <input type="time" name="jamKerja" id="jamKerja" class="form-control" value="{{ $shift->jamKerja }}" required>
+            <input 
+                type="time" 
+                name="jamKerja" 
+                id="jamKerja" 
+                class="form-control" 
+                value="{{ \Carbon\Carbon::parse($shift->jamKerja)->format('H:i') }}" 
+                required>
         </div>
         <div class="mb-3">
             <label for="jamPulang" class="form-label">Jam Pulang</label>
-            <input type="time" name="jamPulang" id="jamPulang" class="form-control" value="{{ $shift->jamPulang }}" required>
+            <input 
+                type="time" 
+                name="jamPulang" 
+                id="jamPulang" 
+                class="form-control" 
+                value="{{ \Carbon\Carbon::parse($shift->jamPulang)->format('H:i') }}" 
+                required>
         </div>
         <button type="submit" class="btn btn-primary">Perbarui</button>
         <a href="{{ route('shifts.index') }}" class="btn btn-secondary">Batal</a>

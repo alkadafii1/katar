@@ -57,7 +57,7 @@ class ShiftController extends Controller
         $request->validate([
             'idstaff' => 'required|exists:staff,id',
             'jamKerja' => 'required|date_format:H:i',
-            'jamPulang' => 'required|date_format:H|after:jamKerja',
+            'jamPulang' => 'required|date_format:H:i|after:jamKerja',
         ]);
 
         // Mencari shift yang ingin diupdate

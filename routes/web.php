@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MerkController;
@@ -7,10 +8,14 @@ use App\Http\Controllers\pelangganController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ShiftController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 // index,create,store,show,edit,update,destroy
 // CRUD barang
