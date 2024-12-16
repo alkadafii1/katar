@@ -22,7 +22,7 @@
                                     <th scope="col">Stok</th>
                                     <th scope="col">Harga Beli</th>
                                     <th scope="col">Harga Jual</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,7 +34,7 @@
                                         <td>{{ $barang->stok }}</td>
                                         <td>{{ number_format($barang->hargaBeli, 0, ',', '.') }}</td>
                                         <td>{{ number_format($barang->hargaJual, 0, ',', '.') }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{ route('barangs.edit', $barang->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                             <form action="{{ route('barangs.destroy', $barang->id) }}" method="POST" style="display:inline;">
                                                 @csrf

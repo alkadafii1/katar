@@ -17,17 +17,11 @@
 
         /* Variabel untuk warna agar mudah diubah */
         :root {
-            --navbar-bg-color:rgb(255, 255, 255); /* Warna background navbar */
-            --footer-bg-color:rgb(255, 255, 255); /* Warna background footer */
-            --content-bg-color: rgba(250,242,230); /* Warna background konten */
-            --navbar-text-color: #333; /* Warna teks navbar */
-            --footer-text-color: #333; /* Warna teks footer */
-        }
-
-        /* Membuat konten utama memenuhi ruang */
-        .content {
-            flex-grow: 1;
-            background-color: var(--content-bg-color);
+            --navbar-bg-color: rgb(255, 255, 255);
+            --footer-bg-color: rgb(255, 255, 255);
+            --content-bg-color: rgba(250, 242, 230);
+            --navbar-text-color: #333;
+            --footer-text-color: #333;
         }
 
         /* Navbar styling */
@@ -44,6 +38,41 @@
         .navbar .navbar-brand:hover,
         .navbar .nav-link:hover {
             color: #0056b3;
+        }
+
+        /* Sidebar styling */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px; /* Default sidebar width */
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Make sure sidebar stays on top */
+        }
+
+        #sidebar a {
+            display: block;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        #sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Konten utama */
+        .content {
+            background-color: var(--content-bg-color);
+            padding: 20px;
+            margin-left: 250px; /* Margin untuk konten utama agar tidak menempel ke sidebar */
+            flex-grow: 1;
+            min-height: 100vh; /* Membuat konten utama memenuhi tinggi layar */
         }
 
         /* Footer styling */
@@ -64,46 +93,54 @@
             text-decoration: underline;
         }
 
+        /* Wrapper untuk memastikan konten utama tetap di tengah */
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Membatasi lebar maksimal konten */
+            margin: 0 auto; /* Memastikan konten tetap di tengah */
+        }
+
+        /* Responsif: Menyembunyikan sidebar dan konten utama saat layar kecil */
+        @media (max-width: 768px) {
+            #sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #sidebar {
+                width: 0;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/home') }}">Kasir Pintar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/staffs') }}">Staff</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/shifts') }}">Shift</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/barangs') }}">Barang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/merks') }}">Merk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/kategoris') }}">Kategori</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <a href="{{ url('/home') }}">Dashboard</a>
+        <a href="{{ url('/staffs') }}">Staff</a>
+        <a href="{{ url('/shifts') }}">Shift</a>
+        <a href="{{ url('/barangs') }}">Barang</a>
+        <a href="{{ url('/merks') }}">Merk</a>
+        <a href="{{ url('/kategoris') }}">Kategori</a>
+        <a href="{{ url('/suppliers') }}">Supplier</a>
+    </div>
 
     <!-- Main Content -->
-    <div class="container content py-4">
-        @yield('content')
+    <div class="content">
+        <div class="container py-4">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Footer -->
