@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Merk;
 use Illuminate\Http\Request;
 
-class MerkController extends Controller
+class merkController extends Controller
 {
     // Menampilkan semua merk
     public function index()

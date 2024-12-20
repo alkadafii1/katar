@@ -6,7 +6,7 @@ use App\Models\Shift;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 
-class ShiftController extends Controller
+class shiftController extends Controller
 {
     // Menampilkan daftar shift
     public function index()

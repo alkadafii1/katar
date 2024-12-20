@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pelanggan;
 use Illuminate\Http\Request;
 
-class PelangganController extends Controller
+class pelangganController extends Controller
 {
     // daftar pelanggan
     public function index()
