@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Kasir Pintar')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Reset margin/padding */
         body, html {
@@ -40,37 +40,10 @@
             color: #0056b3;
         }
 
-        /* Sidebar styling */
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 250px; /* Default sidebar width */
-            background-color: #f8f9fa;
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000; /* Make sure sidebar stays on top */
-        }
-
-        #sidebar a {
-            display: block;
-            color: #333;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        #sidebar a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
         /* Konten utama */
         .content {
             background-color: var(--content-bg-color);
             padding: 20px;
-            margin-left: 250px; /* Margin untuk konten utama agar tidak menempel ke sidebar */
             flex-grow: 1;
             min-height: 100vh; /* Membuat konten utama memenuhi tinggi layar */
         }
@@ -93,47 +66,44 @@
             text-decoration: underline;
         }
 
-        /* Wrapper untuk memastikan konten utama tetap di tengah */
         .container {
             width: 100%;
-            max-width: 1200px; /* Membatasi lebar maksimal konten */
-            margin: 0 auto; /* Memastikan konten tetap di tengah */
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        /* Responsif: Menyembunyikan sidebar dan konten utama saat layar kecil */
-        @media (max-width: 768px) {
-            #sidebar {
-                width: 200px;
-            }
-
-            .content {
-                margin-left: 200px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            #sidebar {
-                width: 0;
-            }
-
-            .content {
-                margin-left: 0;
-            }
-        }
+        
     </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
-    <!-- Sidebar -->
-    <div id="sidebar">
-        <a href="{{ url('/home') }}">Dashboard</a>
-        <a href="{{ url('/staffs') }}">Staff</a>
-        <a href="{{ url('/shifts') }}">Shift</a>
-        <a href="{{ url('/barangs') }}">Barang</a>
-        <a href="{{ url('/merks') }}">Merk</a>
-        <a href="{{ url('/kategoris') }}">Kategori</a>
-        <a href="{{ url('/suppliers') }}">Supplier</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/home">Kasir Pintar</a>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li><a href="{{ url('/home') }}" class="nav-link">Dashboard</a></li>
+                <li><a href="{{ url('/staffs') }}" class="nav-link">Staff</a></li>
+                <li><a href="{{ url('/shifts') }}" class="nav-link">Shift</a></li>
+                <li><a href="{{ url('/barangs') }}" class="nav-link">Barang</a></li>
+                <li><a href="{{ url('/merks') }}" class="nav-link">Merk</a></li>
+                <li><a href="{{ url('/kategoris') }}" class="nav-link">Kategori</a></li>
+                <li><a href="{{ url('/suppliers') }}" class="nav-link">Supplier</a></li>
+            </ul>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -148,8 +118,7 @@
         <p>&copy; Katar 2024 | <a href="#">Privacy Policy</a></p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

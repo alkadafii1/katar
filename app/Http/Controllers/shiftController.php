@@ -6,6 +6,7 @@ use App\Models\Shift;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 
+
 class ShiftController extends Controller
 {
     // Menampilkan daftar shift
@@ -44,7 +45,7 @@ class ShiftController extends Controller
     // Menampilkan form untuk mengedit shift
     public function edit($id)
     {
-        // Mencari shift berdasarkan ID dan menampilkan form edit
+        // Mencari shift berdasarkan ID dan menampilkan form edit     
         $shift = Shift::findOrFail($id); 
         $staffs = Staff::all(); 
         return view('shifts.edit', compact('shift', 'staffs'));
@@ -79,3 +80,4 @@ class ShiftController extends Controller
         return redirect()->route('shifts.index')->with('success', 'Shift berhasil dihapus');
     }
 }
+

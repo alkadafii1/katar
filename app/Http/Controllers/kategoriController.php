@@ -69,3 +69,4 @@ class KategoriController extends Controller
         return redirect()->route('kategoris.index')->with('success', 'Kategori berhasil dihapus');
     }
 }
+

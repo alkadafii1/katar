@@ -91,3 +91,4 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index')->with('success', 'Supplier berhasil dihapus.');
     }
 }
+

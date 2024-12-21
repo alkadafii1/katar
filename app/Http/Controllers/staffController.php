@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\staff;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class staffController extends Controller
 {
     // Menampilkan staff
     public function index()
@@ -74,3 +74,4 @@ class StaffController extends Controller
         return redirect()->route('staffs.index')->with('success', 'Staff berhasil dihapus.');
     }
 }
+

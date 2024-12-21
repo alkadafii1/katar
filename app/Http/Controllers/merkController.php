@@ -71,3 +71,4 @@ class MerkController extends Controller
         return redirect()->route('merks.index')->with('success', 'merk berhasil dihapus');
     }
 }
+
