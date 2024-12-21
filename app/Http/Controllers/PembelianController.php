@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pembelian;
-use App\Models\barang;
-use App\Models\supplier;
-use App\Models\transaksi;
 
 class PembelianController extends Controller
 {

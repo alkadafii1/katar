@@ -7,8 +7,6 @@ use App\Models\Transaksi;
 use App\Models\Penjualan;
 use App\Models\Pembelian;
 use App\Models\Penukaran;
-use App\Models\pelanggan;
-use App\Models\staff;
 
 class TransaksiController extends Controller
 {

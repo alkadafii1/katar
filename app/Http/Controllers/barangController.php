@@ -7,7 +7,7 @@ use App\Models\Kategori;
 use App\Models\Merk;
 use Illuminate\Http\Request;
 
-class barangController extends Controller
+class BarangController extends Controller
 {
     // Menampilkan semua barang
     public function index()
