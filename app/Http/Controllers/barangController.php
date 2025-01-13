@@ -12,14 +12,14 @@ class BarangController extends Controller
     public function index()
     {
         $barangs = Barang::all(); 
-        return view('barangs.index', compact('barangs'));
+        return view('user.barangs.index', compact('barangs'));
     }
 
     public function create()
     {
         $kategoris = Kategori::all(); 
         $merks = Merk::all();
-        return view('barangs.create', compact('kategoris', 'merks')); 
+        return view('user.barangs.create', compact('kategoris', 'merks')); 
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($id); 
         $kategoris = Kategori::all(); 
         $merks = Merk::all(); 
-        return view('barangs.edit', compact('barang', 'kategoris', 'merks')); 
+        return view('user.barangs.edit', compact('barang', 'kategoris', 'merks')); 
     }
 
     public function update(Request $request, $id)

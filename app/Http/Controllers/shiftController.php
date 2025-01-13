@@ -11,13 +11,13 @@ class ShiftController extends Controller
     public function index()
     {
         $shifts = Shift::getAllShifts();
-        return view('shifts.index', compact('shifts'));
+        return view('user.shifts.index', compact('shifts'));
     }
 
     public function create()
     {
         $staffs = Staff::all();
-        return view('shifts.create', compact('staffs'));
+        return view('user.shifts.create', compact('staffs'));
     }
 
     public function store(Request $request)
@@ -30,7 +30,7 @@ class ShiftController extends Controller
     {
         $shift = Shift::getShift($id);
         $staffs = Staff::all();
-        return view('shifts.edit', compact('shift', 'staffs'));
+        return view('user.shifts.edit', compact('shift', 'staffs'));
     }
 
     public function update(Request $request, $id)

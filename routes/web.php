@@ -10,14 +10,17 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CashDrawerController;
 use App\Http\Controllers\OpnameController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 }); 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+// tampilan awal sebelum login
+Route::get('/', [HomeController::class, 'guest'])->name('guest.home');
+// index,create,store,show,edit,update,destroy
+Route::get('/home', [HomeController::class, 'user'])->name('user.home');
 
 //CRUD supplier
 Route::resource('suppliers', SupplierController::class);
@@ -46,4 +49,8 @@ Route::resource('cashdrawers', CashdrawerController::class);
 // CRUD opname
 Route::resource('opnames',OpnameController::class);
 
-
+// LOGIN
+Route::get('guest/login/daftar', [LoginController::class, 'Daftar'])->name('guest.daftar');
+Route::get('guest/login/masuk', [LoginController::class, 'Masuk'])->name('guest.masuk');
+Route::post('guest/login/daftar', [LoginController::class, 'submitDaftar'])->name('guest.daftar.submit');
+Route::post('guest/login/masuk', [LoginController::class, 'submitMasuk'])->name('guest.masuk.submit');

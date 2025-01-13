@@ -11,13 +11,13 @@ class MerkController extends Controller
     public function index()
     {
         $merks = Merk::all();
-        return view('merks.index', compact('merks'));
+        return view('user.merks.index', compact('merks'));
     }
 
     // Menampilkan form untuk membuat merk baru
     public function create()
     {
-        return view('merks.create');
+        return view('user.merks.create');
     }
 
     // Menyimpan merk baru
@@ -35,7 +35,7 @@ class MerkController extends Controller
     public function edit($id)
     {
         $merk = Merk::findOrFail($id);
-        return view('merks.edit', compact('merk'));
+        return view('user.merks.edit', compact('merk'));
     }
 
     // Memperbarui data merk

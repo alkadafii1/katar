@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function guest()
     {
-        return view('home/index');
+        return view('guest.home.index');
+    }
+
+    public function user()
+    {
+        return view('user.home.index');
     }
 }
 

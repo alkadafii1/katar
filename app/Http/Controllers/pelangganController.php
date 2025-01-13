@@ -10,12 +10,12 @@ class PelangganController extends Controller
     public function index()
     {
         $pelanggans = Pelanggan::all(); 
-        return view('pelanggans.index', compact('pelanggans'));
+        return view('user.pelanggans.index', compact('pelanggans'));
     }
 
     public function create()
     {
-        return view('pelanggans.create'); 
+        return view('user.pelanggans.create'); 
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class PelangganController extends Controller
     public function edit($id)
     {
         $pelanggan = Pelanggan::findOrFail($id); 
-        return view('pelanggans.edit', compact('pelanggan')); 
+        return view('user.pelanggans.edit', compact('pelanggan')); 
     }
 
     public function update(Request $request, $id)

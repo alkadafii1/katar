@@ -11,13 +11,13 @@ class CashDrawerController extends Controller
     public function index()
     {
         $cashdrawers = CashDrawer::with('shift.staff')->get();
-        return view('cashdrawers.index', compact('cashdrawers'));
+        return view('user.cashdrawers.index', compact('cashdrawers'));
     }
 
     public function create()
     {
         $staffs = Staff::all();
-        return view('cashdrawers.create', compact('staffs'));
+        return view('user.cashdrawers.create', compact('staffs'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class CashDrawerController extends Controller
         $cashdrawer = CashDrawer::findOrFail($id);
         $staffs = Staff::all();
 
-        return view('cashdrawers.edit', compact('cashdrawer', 'staffs'));
+        return view('user.cashdrawers.edit', compact('cashdrawer', 'staffs'));
     }
 
     public function update(Request $request, $id)

@@ -12,14 +12,14 @@ class OpnameController extends Controller
     public function index()
     {
         $opnames = Opname::with('barang', 'staff')->get();
-        return view('opnames.index', compact('opnames'));
+        return view('user.opnames.index', compact('opnames'));
     }
 
     public function create()
     {
         $barangs = Barang::all();
         $staffs = Staff::all();
-        return view('opnames.create', compact('barangs', 'staffs'));
+        return view('user.opnames.create', compact('barangs', 'staffs'));
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class OpnameController extends Controller
         $opname = Opname::findOrFail($id);
         $barangs = Barang::all();
         $staffs = Staff::all();
-        return view('opnames.edit', compact('opname', 'barangs', 'staffs'));
+        return view('user.opnames.edit', compact('opname', 'barangs', 'staffs'));
     }
 
     public function update(Request $request, $id)

@@ -10,12 +10,12 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::all();
-        return view('suppliers.index', compact('suppliers'));
+        return view('user.suppliers.index', compact('suppliers'));
     }
 
     public function create()
     {
-        return view('suppliers.create');
+        return view('user.suppliers.create');
     }
 
     public function store(Request $request)
@@ -32,12 +32,12 @@ class SupplierController extends Controller
 
     public function show(Supplier $supplier)
     {
-        return view('suppliers.show', compact('supplier'));
+        return view('user.suppliers.show', compact('supplier'));
     }
 
     public function edit(Supplier $supplier)
     {
-        return view('suppliers.edit', compact('supplier'));
+        return view('user.suppliers.edit', compact('supplier'));
     }
 
     public function update(Request $request, Supplier $supplier)
